@@ -11,8 +11,8 @@ m.pass_('PASSWORD')
 # bucle para cada mensaje
 numero = len(m.list()[1])
 for i in range (numero):
-   print "Mensaje numero"+str(i+1)
-   print "--------------------"
+   print("Mensaje numero"+str(i+1))
+   print("--------------------")
    # Se lee el mensaje
    response, headerLines, bytes = m.retr(i+1)
    # Se mete todo el mensaje en un unico string
@@ -21,9 +21,9 @@ for i in range (numero):
    p = Parser()
    email = p.parsestr(mensaje)
    # Se sacan por pantalla los campos from, to y subject
-   print "From: "+email["From"]
-   print "To: "+email["To"]
-   print "Subject: "+email["Subject"]
+   print("From: "+email["From"])
+   print("To: "+email["To"])
+   print("Subject: "+email["Subject"])
    # Si es un mensaje compuesto
    if (email.is_multipart()):
       # bucle para cada parte del mensaje
@@ -32,7 +32,7 @@ for i in range (numero):
          tipo =  part.get_content_type()
          if ("text/plain" == tipo):
                  # Si es texto plano, se saca por pantalla
-                 print part.get_payload(decode=True)
+                 print(part.get_payload(decode=True))
          if ("image/gif" == tipo):
                  # Si es imagen, se extrae el nombre del fichero
                  # adjunto y se guarda la imagen
@@ -45,7 +45,7 @@ for i in range (numero):
       tipo = email.get_content_type()
       if ("text/plain" == tipo):
          # Si es texto plano, se escribe en pantalla
-         print email.get_payload(decode=True)
+         print(email.get_payload(decode=True))
 
 # Cierre de la conexion
 m.quit()

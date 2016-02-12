@@ -8,7 +8,7 @@ import sys
 from email.Parser import Parser as EmailParser
 from email.utils import parseaddr
 # cStringIOはダメ
-from StringIO import StringIO
+from io import StringIO
 
 class NotSupportedMailFormat(Exception):
     pass
@@ -55,7 +55,7 @@ def parse(content):
         subj_fragments = []
         for s , enc in decodefrag:
             if enc:
-                s = unicode(s , enc).encode('utf8','replace')
+                s = str(s , enc).encode('utf8','replace')
             subj_fragments.append(s)
         subject = ''.join(subj_fragments)
     else:
@@ -71,7 +71,7 @@ def parse(content):
         elif part.get_content_type() == "text/plain":
             if body is None:
                 body = ""
-            body += unicode(
+            body += str(
                 part.get_payload(decode=True),
                 part.get_content_charset(),
                 'replace'
@@ -79,7 +79,7 @@ def parse(content):
         elif part.get_content_type() == "text/html":
             if html is None:
                 html = ""
-            html += unicode(
+            html += str(
                 part.get_payload(decode=True),
                 part.get_content_charset(),
                 'replace'
