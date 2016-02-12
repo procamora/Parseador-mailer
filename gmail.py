@@ -30,26 +30,26 @@ for i in range (numero):
    print("Subject: "+email["Subject"])
    # Si es un mensaje compuesto
    if (email.is_multipart()):
-      # bucle para cada parte del mensaje
-      for part in email.get_payload():
-         # Se mira el mime type de la parte
-         tipo =  part.get_content_type()
-         if ("text/plain" == tipo):
-                 # Si es texto plano, se saca por pantalla
-                 print(part.get_payload(decode=True))
-         if ("image/gif" == tipo):
-                 # Si es imagen, se extrae el nombre del fichero
-                 # adjunto y se guarda la imagen
-                 nombre_fichero = part.get_filename()
-                 fp = open('recibido_'+nombre_fichero,'wb')
-                 fp.write(part.get_payload(decode=True))
-                 fp.close()
+        # bucle para cada parte del mensaje
+        for part in email.get_payload():
+            # Se mira el mime type de la parte
+            tipo =  part.get_content_type()
+            if ("text/plain" == tipo):
+                # Si es texto plano, se saca por pantalla
+                print(part.get_payload(decode=True))
+            if ("image/gif" == tipo):
+                # Si es imagen, se extrae el nombre del fichero
+                # adjunto y se guarda la imagen
+                nombre_fichero = part.get_filename()
+                fp = open('recibido_'+nombre_fichero,'wb')
+                fp.write(part.get_payload(decode=True))
+                fp.close()
    else:
-      # Si es mensaje simple
-      tipo = email.get_content_type()
-      if ("text/plain" == tipo):
-         # Si es texto plano, se escribe en pantalla
-         print(email.get_payload(decode=True))
+        # Si es mensaje simple
+        tipo = email.get_content_type()
+        if ("text/plain" == tipo):
+            # Si es texto plano, se escribe en pantalla
+            print(email.get_payload(decode=True))
 
 # Cierre de la conexion
 m.quit()
