@@ -1,5 +1,6 @@
-#!/usr/local/bin/python
-# vim:fileencoding=utf8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 # http://www.ianlewis.org/en/parsing-email-attachments-python
 from email.Header import decode_header
 import email
@@ -7,7 +8,7 @@ from base64 import b64decode
 import sys
 from email.Parser import Parser as EmailParser
 from email.utils import parseaddr
-# cStringIOはダメ
+# cStringIO
 from io import StringIO
 
 class NotSupportedMailFormat(Exception):

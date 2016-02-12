@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import poplib
+
 from email.Parser import Parser
 
 m = poplib.POP3_SSL('pop.gmail.com',995)				# Se establece conexion con el servidor pop de gmail

@@ -1,4 +1,8 @@
-import getpass, imaplib
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import getpass
+import imaplib
 
 M = imaplib.IMAP4_SSL("imap.gmail.com", 993)
 email = 'USERNAME@gmail.com'
